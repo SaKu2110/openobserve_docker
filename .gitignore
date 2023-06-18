@@ -1,1 +1,2 @@
 /services/openobserve/.env
+/services/prometheus/prometheus.yml
