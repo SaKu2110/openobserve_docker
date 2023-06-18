@@ -1,0 +1,21 @@
+global:
+  scrape_interval: 3s
+  evaluation_interval: 3s
+
+scrape_configs:
+  - job_name: "openobserve"
+    static_configs:
+      - targets: ["openobserve:5080"]
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["prometheus:9090"]
+  - job_name: "cadvisor"
+    static_configs:
+      - targets: ["cadvisor:8080"]
+
+remote_write:
+  - url: http://openobserve:5080/api/default/prometheus/api/v1/write
+    remote_timeout: 30s
+    basic_auth:
+      username: root@example.com
+      password: 4YBGvFfQrAroSJqp # ここはよしなに書き換え
